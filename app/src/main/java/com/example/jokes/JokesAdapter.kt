@@ -37,7 +37,7 @@ class JokesAdapter : RecyclerView.Adapter<JokesAdapter.JokesViewHolder>() {
             false
         )
             )
-        
+
     }
 
     override fun onBindViewHolder(holder: JokesViewHolder, position: Int) {
