@@ -2,12 +2,15 @@ package com.example.jokes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jokes.databinding.ActivityMainBinding
 import okio.IOException
 import retrofit2.HttpException
 
+
+const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -26,16 +29,16 @@ class MainActivity : AppCompatActivity() {
             val response = try {
                 RetrofitInstance.api.getJokes()
             } catch (e: IOException) {
-                TODO()
+                Log.e(TAG, "IOException, check your internet")
                 return@launchWhenCreated
             } catch (e: HttpException){
-                TODO()
+                Log.e(TAG, "HttpException, unexpected response")
                 return@launchWhenCreated
             }
             if(response.isSuccessful && response.body() != null) {
                 jokesAdapter.jokes = response.body()!!
             } else {
-                TODO()
+                Log.e(TAG, "Response unsuccessful")
             }
         }
 
