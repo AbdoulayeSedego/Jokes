@@ -10,7 +10,7 @@ import com.example.jokes.databinding.ListItemBinding
 
 class JokesAdapter : RecyclerView.Adapter<JokesAdapter.JokesViewHolder>() {
 
-    inner class JokesViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
+   inner class JokesViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val diffcallback = object : DiffUtil.ItemCallback<Jokes>()  {
         override fun areItemsTheSame(oldItem: Jokes, newItem: Jokes): Boolean {
@@ -26,7 +26,7 @@ class JokesAdapter : RecyclerView.Adapter<JokesAdapter.JokesViewHolder>() {
         get() = differ.currentList
         set(value) { differ.submitList(value) }
 
-    override fun getItemCount(): Int = jokes.size
+    override fun getItemCount() = jokes.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokesViewHolder {
         return JokesViewHolder(
